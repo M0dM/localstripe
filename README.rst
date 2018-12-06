@@ -229,7 +229,7 @@ Flushing stored data can be performed using the ``/_config`` route with DELETE h
 
 .. code:: shell
 
-curl -X DELETE localhost:8420/_config/store
+ curl -X DELETE localhost:8420/_config/store
 
 Hacking and contributing
 ------------------------
