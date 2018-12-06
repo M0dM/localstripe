@@ -201,12 +201,13 @@ Register a webhook using the special ``/_config`` route:
 
 Then, localstripe will send webhooks to this url.
 Only those events types are currently supported:
-* Product: ``product.created``
-* Plan: ``plan.created``
-* Customer: ``customer.created``, ``customer.updated`` and ``customer.deleted``
-* Source: ``customer.source.created``
-* Subscription: ``customer.subscription.created`` and ``customer.subscription.deleted``
-* Invoice: ``invoice.created``, ``invoice.payment_succeeded`` and ``invoice.payment_failed``
+
+- Product: ``product.created``
+- Plan: ``plan.created``
+- Customer: ``customer.created``, ``customer.updated`` and ``customer.deleted``
+- Source: ``customer.source.created``
+- Subscription: ``customer.subscription.created`` and ``customer.subscription.deleted``
+- Invoice: ``invoice.created``, ``invoice.payment_succeeded`` and ``invoice.payment_failed``
 
 Flush stored data
 ------------
