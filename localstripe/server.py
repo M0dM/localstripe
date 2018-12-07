@@ -288,7 +288,7 @@ async def flush_store(request):
 
 
 app.router.add_post('/_config/webhooks/{id}', config_webhook)
-app.router.add_delete('/_config/store', flush_store)
+app.router.add_delete('/_config/data', flush_store)
 
 
 def start():
