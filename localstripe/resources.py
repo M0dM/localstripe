@@ -555,7 +555,11 @@ extra_apis.append(
     ('POST', '/v1/customers/{id}/sources', Customer._api_add_source))
 
 extra_apis.append(  # Retrieve single source by id
-    ('GET', '/v1/customers/{id}/sources/{source_id}', Customer._api_retrieve_source))
+    (
+        'GET', '/v1/customers/{id}/sources/{source_id}',
+        Customer._api_retrieve_source
+    )
+)
 
 extra_apis.append(  # this is the old API route:
     ('POST', '/v1/customers/{id}/cards', Customer._api_add_source))
