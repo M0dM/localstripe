@@ -145,6 +145,22 @@ curl -sSf -u $SK: $HOST/v1/customers \
      -d description='Customer with already existing source' \
      -d source=$tok
 
+# For a customer with no source, `default_source` should be `null`:
+cus=$(curl -sSf -u $SK: $HOST/v1/customers -d email=joe.malvic@example.com \
+      | grep -oE 'cus_\w+' | head -n 1)
+ds=$(curl -sSf -u $SK: $HOST/v1/customers/$cus?expand%5B%5D=default_source \
+     | grep -oE '"default_source": \w+,')
+[ "$ds" = '"default_source": null,' ]
+curl -sSf -u $SK: $HOST/v1/customers/$cus/cards \
+          -d source[object]=card \
+          -d source[number]=4242424242424242 \
+          -d source[exp_month]=12 \
+          -d source[exp_year]=2020 \
+          -d source[cvc]=123
+ds=$(curl -sSf -u $SK: $HOST/v1/customers/$cus?expand%5B%5D=default_source \
+     | grep -oE '"default_source": null",' || true)
+[ -z "$ds" ]
+
 curl -sSf -u $SK: $HOST/v1/invoices?customer=$cus
 
 code=$(curl -s -o /dev/null -w "%{http_code}" -u $SK: \
